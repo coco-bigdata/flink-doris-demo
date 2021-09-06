@@ -37,25 +37,25 @@ import java.util.Properties;
 
 public class FlinkKafka2Doris {
     //kafka address
-    private static final String bootstrapServer = "xxx:9092,xxx:9092,xxx:9092";
+    private static final String bootstrapServer = "192.168.0.200:9092,192.168.0.160:9092,192.168.0.178:9092";
     //kafka groupName
     private static final String groupName = "test_flink_doris_group";
     //kafka topicName
-    private static final String topicName = "test_flink_doris";
+    private static final String topicName = "c_original_data_t_topic";
     //doris ip port
-    private static final String hostPort = "xxx:8030";
+    private static final String hostPort = "192.168.0.186:8030";
     //doris dbName
-    private static final String dbName = "test1";
+    private static final String dbName = "camtg";
     //doris tbName
-    private static final String tbName = "doris_test_source_2";
+    private static final String tbName = "c_original_data_t";
     //doris userName
     private static final String userName = "root";
     //doris password
-    private static final String password = "";
+    private static final String password = "camtg";
     //doris columns
-    private static final String columns = "name,age,price,sale";
+    private static final String columns = "package_time,package_date,equipment_number,receive_time,ip,data";
     //json format
-    private static final String jsonFormat = "[\"$.name\",\"$.age\",\"$.price\",\"$.sale\"]";
+    private static final String jsonFormat = "[\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"]";
 
     public static void main(String[] args) throws Exception {
 

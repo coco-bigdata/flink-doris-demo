@@ -28,9 +28,8 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import java.util.Properties;
 
 /**
- *
  * This example mainly demonstrates how to use flink to stream Kafka data.
- *  And use the doris streamLoad method to write the data into the table specified by doris
+ * And use the doris streamLoad method to write the data into the table specified by doris
  * <p>
  * Kafka data format is an array, For example: ["id":1,"name":"root"]
  */
@@ -55,7 +54,8 @@ public class FlinkKafka2Doris {
     //doris columns
     private static final String columns = "package_time,package_date,equipment_number,receive_time,ip,data";
     //json format
-    private static final String jsonFormat = "[\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"]";
+    //private static final String jsonFormat = "[\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"]";
+    private static final String jsonFormat = "{\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"}";
 
     public static void main(String[] args) throws Exception {
 
@@ -79,7 +79,7 @@ public class FlinkKafka2Doris {
 
         DorisStreamLoad dorisStreamLoad = new DorisStreamLoad(hostPort, dbName, tbName, userName, password);
 
-        dataStreamSource.addSink(new DorisSink(dorisStreamLoad,columns,jsonFormat));
+        dataStreamSource.addSink(new DorisSink(dorisStreamLoad, columns, jsonFormat));
 
         blinkStreamEnv.execute("flink kafka to doris");
 

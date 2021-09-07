@@ -77,7 +77,7 @@ public class DorisStreamLoad implements Serializable {
         conn.addRequestProperty("columns", columns);
         conn.addRequestProperty("format", "json");
         conn.addRequestProperty("jsonpaths", jsonformat);
-        conn.addRequestProperty("strip_outer_array", "true");
+        conn.addRequestProperty("strip_outer_array", "false");
         conn.setDoOutput(true);
         conn.setDoInput(true);
 

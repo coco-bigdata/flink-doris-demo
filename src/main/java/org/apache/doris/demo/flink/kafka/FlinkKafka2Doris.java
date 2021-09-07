@@ -54,8 +54,7 @@ public class FlinkKafka2Doris {
     //doris columns
     private static final String columns = "package_time,package_date,equipment_number,receive_time,ip,data";
     //json format
-    //private static final String jsonFormat = "[\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"]";
-    private static final String jsonFormat = "{\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"}";
+    private static final String jsonFormat = "[\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"]";
 
     public static void main(String[] args) throws Exception {
 

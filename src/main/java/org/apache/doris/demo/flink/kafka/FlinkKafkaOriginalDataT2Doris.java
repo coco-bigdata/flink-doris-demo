@@ -38,7 +38,7 @@ public class FlinkKafkaOriginalDataT2Doris {
     //kafka address
     private static final String bootstrapServer = "192.168.0.200:9092,192.168.0.160:9092,192.168.0.178:9092";
     //kafka groupName
-    private static final String groupName = "flink_doris_c_original_data_t_group";
+    private static final String groupName = "flink_doris_camtg_group";
     //kafka topicName
     private static final String topicName = "c_original_data_t_topic";
     //doris ip port

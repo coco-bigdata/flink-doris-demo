@@ -79,7 +79,6 @@ public class FlinkKafka2Doris {
         DorisStreamLoad dorisStreamLoad = new DorisStreamLoad(hostPort, dbName, tbName, userName, password);
 
         dataStreamSource.addSink(new DorisSink(dorisStreamLoad, columns, jsonFormat));
-
         blinkStreamEnv.execute("flink kafka to doris");
 
     }

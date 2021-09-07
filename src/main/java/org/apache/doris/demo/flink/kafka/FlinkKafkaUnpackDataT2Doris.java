@@ -52,9 +52,9 @@ public class FlinkKafkaUnpackDataT2Doris {
     //doris password
     private static final String password = "camtg";
     //doris columns
-    private static final String columns = "package_time,package_date,equipment_number,receive_time,ip,data";
+    private static final String columns = "package_time,package_date,equipment_number,ip,status,package_no,work_time,standby_time,warning_time,piece_cnt";
     //json format
-    private static final String jsonFormat = "[\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.receive_time\",\"$.ip\",\"$.data\"]";
+    private static final String jsonFormat = "[\"$.package_time\",\"$.package_date\",\"$.equipment_number\",\"$.ip\",\"$.status\",\"$.package_no\",\"$.work_time\",\"$.standby_time\",\"$.warning_time\",\"$.piece_cnt\"]";
 
     public static void main(String[] args) throws Exception {
 
@@ -79,7 +79,7 @@ public class FlinkKafkaUnpackDataT2Doris {
         DorisStreamLoad dorisStreamLoad = new DorisStreamLoad(hostPort, dbName, tbName, userName, password);
 
         dataStreamSource.addSink(new DorisSink(dorisStreamLoad, columns, jsonFormat));
-        blinkStreamEnv.execute("flink kafka to doris c_original_data_t");
+        blinkStreamEnv.execute("flink kafka to doris c_unpack_data_t");
 
     }
 }

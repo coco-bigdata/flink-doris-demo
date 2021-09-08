@@ -78,7 +78,6 @@ public class FlinkKafkaOriginalDataT2Doris {
         DataStreamSource<String> dataStreamSource = blinkStreamEnv.addSource(flinkKafkaConsumer).setParallelism(2);
 
         DorisStreamLoad dorisStreamLoad = new DorisStreamLoad(hostPort, dbName, tbName, userName, password);
-
         dataStreamSource.addSink(new DorisSink(dorisStreamLoad, columns, jsonFormat));
         blinkStreamEnv.execute("flink kafka to doris c_original_data_t");
 

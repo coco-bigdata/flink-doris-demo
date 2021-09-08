@@ -25,9 +25,8 @@ under the License.
     <artifactId>flink-doris-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>flink-demo</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <name>flink-doris-demo</name>
+    <url>https://www.luomor.com</url>
 
     <properties>
         <scala.version>2.12.10</scala.version>
@@ -101,7 +100,6 @@ under the License.
             <artifactId>flink-shaded-hadoop-2-uber</artifactId>
             <version>2.6.5-10.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache</groupId>
             <artifactId>doris-flink</artifactId>

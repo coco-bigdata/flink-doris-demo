@@ -60,10 +60,11 @@ public class FlinkKafkaUnpackDataT2Doris {
 
         Properties props = new Properties();
         props.put("bootstrap.servers", bootstrapServer);
+        props.put("zookeeper.connect", "192.168.0.200:2181,192.168.0.160:2181,192.168.0.178:2181");
         props.put("group.id", groupName);
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("auto.offset.reset", "earliest");
+        props.put("auto.offset.reset", "latest");
         props.put("max.poll.records", "10000");
 
         StreamExecutionEnvironment blinkStreamEnv = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -74,7 +75,7 @@ public class FlinkKafkaUnpackDataT2Doris {
                 new SimpleStringSchema(),
                 props);
 
-        DataStreamSource<String> dataStreamSource = blinkStreamEnv.addSource(flinkKafkaConsumer);
+        DataStreamSource<String> dataStreamSource = blinkStreamEnv.addSource(flinkKafkaConsumer).setParallelism(3);
 
         DorisStreamLoad dorisStreamLoad = new DorisStreamLoad(hostPort, dbName, tbName, userName, password);
 

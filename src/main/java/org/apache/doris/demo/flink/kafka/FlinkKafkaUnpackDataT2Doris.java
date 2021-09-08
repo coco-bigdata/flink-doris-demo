@@ -75,7 +75,7 @@ public class FlinkKafkaUnpackDataT2Doris {
                 new SimpleStringSchema(),
                 props);
 
-        DataStreamSource<String> dataStreamSource = blinkStreamEnv.addSource(flinkKafkaConsumer).setParallelism(3);
+        DataStreamSource<String> dataStreamSource = blinkStreamEnv.addSource(flinkKafkaConsumer).setParallelism(2);
 
         DorisStreamLoad dorisStreamLoad = new DorisStreamLoad(hostPort, dbName, tbName, userName, password);
 
